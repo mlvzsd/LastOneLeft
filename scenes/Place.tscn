@@ -15,10 +15,10 @@ texture = ExtResource( 2 )
 [node name="StaticBody2D" type="StaticBody2D" parent="FrontWall"]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="FrontWall/StaticBody2D"]
-polygon = PoolVector2Array( -159.568, 12.6159, -72.8386, 12.746, -72.7867, 4.46912, 79.9049, 4.68481, 79.963, -3.63783, 159.908, -3.50725, 79.9188, 4.68907, -159.568, 20.314 )
+polygon = PoolVector2Array( -160, 12, -74, 12, -74, 4, 79, 4, 79, -4, 160, -4, 79, 5, -160, 21 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
-position = Vector2( 3.34239, -48.5762 )
+position = Vector2( 3, -49 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
-polygon = PoolVector2Array( -162.939, 18.1247, -76.8298, 18.0733, -76.838, 10.0225, 75.1385, 10.0733, 75.1371, 2.06375, 156.414, 2.17815, 156.414, -6.04814, -76.838, 10.0085 )
+polygon = PoolVector2Array( -163, 19, -76, 19, -76, 11, 76, 11, 76, 3, 157, 3, 157, -5, -76, 10 )
