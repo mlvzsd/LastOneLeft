@@ -3,6 +3,8 @@ extends KinematicBody2D
 const SPEED = 70
 
 var velocity := Vector2()
+var anim_status := "idle"
+var anim_direction := "down"
 
 func _ready():
 	print("Player: ready")
@@ -17,3 +19,24 @@ func _physics_process(delta):
 	velocity.y = int(down) - int(up)
 	
 	move_and_collide(velocity * SPEED * delta)
+	
+	if velocity == Vector2.ZERO:
+		anim_status = "idle"
+	else:
+		anim_status = "walk"
+		
+		match velocity:
+			Vector2.LEFT:
+				anim_direction = "right"
+				$AnimatedSprite.flip_h = true
+			Vector2.RIGHT:
+				anim_direction = "right"
+				$AnimatedSprite.flip_h = false
+			Vector2.UP:
+				anim_direction = "up"
+			Vector2.DOWN:
+				anim_direction = "down"
+	
+	var anim_name = str(anim_status, "_", anim_direction)
+	
+	$AnimatedSprite.play(anim_name)
