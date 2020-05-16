@@ -11,3 +11,6 @@ data_*/
 # Test folder ignore
 test/
 
+# Build folder ignore
+build/
+
