@@ -20,6 +20,8 @@ func _physics_process(delta):
 	
 	move_and_collide(velocity * SPEED * delta)
 	
+	z_index = position.y
+	
 	if velocity == Vector2.ZERO:
 		anim_status = "idle"
 	else:
