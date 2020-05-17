@@ -5,6 +5,7 @@ const SPEED = 70
 var velocity := Vector2()
 var anim_status := "idle"
 var anim_direction := "down"
+var is_armed := false
 
 func _ready():
 	print("Player: ready")
@@ -39,7 +40,8 @@ func _physics_process(delta):
 			Vector2.DOWN:
 				anim_direction = "down"
 	
-	var anim_name = str(anim_status, "_", anim_direction)
+	var anim_name = str(anim_status, "_", anim_direction,
+		"_armed" if is_armed else "")
 	
 	$AnimatedSprite.play(anim_name)
 
