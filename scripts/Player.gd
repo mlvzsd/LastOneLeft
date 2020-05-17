@@ -40,3 +40,6 @@ func _physics_process(delta):
 	var anim_name = str(anim_status, "_", anim_direction)
 	
 	$AnimatedSprite.play(anim_name)
+
+func _on_BodyArea_area_entered(area):
+	print("Player: hitted")
