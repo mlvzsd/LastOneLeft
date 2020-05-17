@@ -47,3 +47,6 @@ func _physics_process(delta):
 
 func _on_BodyArea_area_entered(area):
 	print("Player: hitted")
+
+func _on_AnimatedSprite_animation_finished():
+	pass
