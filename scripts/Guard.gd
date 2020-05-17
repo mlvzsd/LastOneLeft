@@ -11,9 +11,10 @@ func _ready():
 	print("Guard[", get_instance_id(), "]: ready")
 
 func _physics_process(delta):
-	velocity = (target.position - position).normalized()
-	
-	move_and_collide(velocity * SPEED * delta)
+	if target:
+		velocity = (target.position - position).normalized()
+		
+		move_and_collide(velocity * SPEED * delta)
 	
 	z_index = position.y
 	
