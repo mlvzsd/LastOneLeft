@@ -31,7 +31,7 @@ func _physics_process(delta):
 	if hitting:
 		return
 	
-	if hit and is_armed:
+	if hit and is_armed and not $AnimatedSprite.animation.begins_with("hit"):
 		var anim_name = str("hit_", anim_direction)
 		
 		$AnimatedSprite.play(anim_name)
