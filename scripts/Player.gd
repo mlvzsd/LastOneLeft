@@ -5,7 +5,14 @@ const SPEED = 70
 var velocity := Vector2()
 var anim_status := "idle"
 var anim_direction := "down"
-var is_armed := false
+var is_armed := true
+var hitting := false
+
+func current_hitter():
+	if anim_direction == "right" and $AnimatedSprite.flip_h:
+		return "LeftHitter/CollisionShape2D"
+	
+	return str(anim_direction.capitalize(), "Hitter/CollisionShape2D")
 
 func _ready():
 	print("Player: ready")
@@ -15,9 +22,22 @@ func _physics_process(delta):
 	var right = Input.is_action_pressed("ui_right")
 	var up = Input.is_action_pressed("ui_up")
 	var down = Input.is_action_pressed("ui_down")
+	var hit = Input.is_action_just_pressed("ui_hit")
 	
 	velocity.x = int(right) - int(left)
 	velocity.y = int(down) - int(up)
+	
+	if hitting:
+		return
+	
+	if hit and is_armed:
+		var anim_name = str("hit_", anim_direction)
+		
+		$AnimatedSprite.play(anim_name)
+		get_node(current_hitter()).disabled = false
+		hitting = true
+		
+		return
 	
 	move_and_collide(velocity * SPEED * delta)
 	
@@ -49,4 +69,6 @@ func _on_BodyArea_area_entered(area):
 	print("Player: hitted")
 
 func _on_AnimatedSprite_animation_finished():
-	pass
+	if hitting:
+		get_node(current_hitter()).disabled = true
+		hitting = false
