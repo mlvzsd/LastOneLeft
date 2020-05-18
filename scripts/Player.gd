@@ -26,6 +26,7 @@ func _physics_process(delta):
 	
 	velocity.x = int(right) - int(left)
 	velocity.y = int(down) - int(up)
+	velocity = velocity.normalized()
 	
 	if hitting:
 		return
