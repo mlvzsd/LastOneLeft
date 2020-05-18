@@ -66,7 +66,8 @@ func _physics_process(delta):
 	$AnimatedSprite.play(anim_name)
 
 func _on_BodyArea_area_entered(area):
-	print("Player: hitted")
+	if area.get("damage") and not is_a_parent_of(area):
+		print("Player: hitted")
 
 func _on_AnimatedSprite_animation_finished():
 	if hitting:
