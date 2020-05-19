@@ -42,7 +42,7 @@ func _physics_process(delta):
 		
 		return
 	
-	move_and_collide(velocity * SPEED * delta)
+	move_and_slide(velocity * SPEED)
 	
 	z_index = position.y
 	
