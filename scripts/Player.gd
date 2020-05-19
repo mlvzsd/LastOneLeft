@@ -1,5 +1,7 @@
 extends KinematicBody2D
 
+signal life_change(delta)
+
 const SPEED = 70
 
 var velocity := Vector2()
@@ -69,6 +71,8 @@ func _physics_process(delta):
 func _on_BodyArea_area_entered(area):
 	if area.get("damage") and not is_a_parent_of(area):
 		print("Player: hitted")
+		
+		emit_signal("life_change", -area.damage)
 
 func _on_AnimatedSprite_animation_finished():
 	if hitting:
